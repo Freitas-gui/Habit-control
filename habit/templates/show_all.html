@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>Show all</title>
+</head>
+<body>
+    <h1 class="title">Here you can see all your Habits</h1>
+    {% for habit in habits %}
+    <div class="habits">
+        <h3>Name</h3> <p>{{habit.name}}</p>
+        <h3>trigger</h3> <p>{{habit.trigger}}</p>
+        <h3>routine</h3> <p>{{habit.routine}}</p>
+        <h3>reward</h3> <p>{{habit.reward}}</p>
+        <h3>good</h3> <p>{{habit.good}}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>

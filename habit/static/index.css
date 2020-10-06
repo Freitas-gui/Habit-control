@@ -1,0 +1,13 @@
+body{
+    background: #88ff88;
+}
+
+.title{
+    text-align: center;
+}
+
+.habits{
+    background: #8888ff;
+    width: 30%;
+    margin: 0 auto;
+}
