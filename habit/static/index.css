@@ -1,9 +1,29 @@
+header{
+    background-color: aqua;
+}
+#box{
+    display: flex;
+    justify-content: space-between;
+}
+
+#img-logo{
+    width: 3em;
+    margin: 5px 0 5px 50px;
+}
+
+#enter{
+    margin: 10px 0px 10px 0;
+    width: 5em;
+    height: 3em;
+}
+
 body{
     background: #88ff88;
 }
 
 .title{
     text-align: center;
+    font-size: 3em;
 }
 
 .habits{
