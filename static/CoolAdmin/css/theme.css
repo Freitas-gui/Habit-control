@@ -1228,10 +1228,45 @@ section {
     top: 51px;
 }
 
+.logo{
+    justify-content: space-between;
+}
+
+.logo-text{
+    width: 200px;
+    font-size: 1.5em;
+    text-align: end;
+}
+
+.logo-icon{
+    max-width: 25%;
+    display: block;
+}
+
 @media (max-width: 991px) {
-    .logo {
-        text-align: center;
+    .logo{
+        max-width: 60px;
+        display: inline;
+        text-align: left;
+        margin-bottom: 5px;
     }
+
+    .logo-text{
+        width: 50px;
+        font-size: 1.5em;
+        display: inline;
+        text-align: right;
+        
+    }
+
+    .logo-icon{
+        display: inline;
+        margin: 0;
+        max-width: 50%;
+
+    }
+    
+   
 }
 
 .header-wrap {
@@ -1679,6 +1714,7 @@ section {
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    max-height: 50px;
 }
 
 .header-mobile .hamburger {
@@ -4513,7 +4549,7 @@ section {
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-bottomleft: 3px;
     border-bottom-left-radius: 3px;
-    vertical-align: top;
+    vertical-align: auto ;
 }
 
 .table-data2.table tbody tr td:first-child .au-checkbox {
@@ -4522,7 +4558,7 @@ section {
 
 @media (max-width: 1199px) {
     .table-data2.table tbody tr td:first-child {
-        vertical-align: middle;
+        vertical-align: auto;
     }
 
     .table-data2.table tbody tr td:first-child .au-checkbox {
