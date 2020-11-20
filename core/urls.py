@@ -19,5 +19,5 @@ from habit import urls as habit_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('habit/', include(habit_urls)),
+    path('', include(habit_urls)),
 ]

@@ -13,6 +13,17 @@
 
 </head>
 <body>
+
+    {% block search  %}
+
+        <form class="form-header" action="{% url 'search'%}"  method = "get" >
+            <input class="au-input au-input--xl"  name = "q_name"  type = "text"  placeholder = "Search for name">
+                <button class="au-btn--submit" type="submit">
+                    <i class="zmdi zmdi-search"></i>
+                </button>
+        </form>
+    {% endblock %}
+
     {% block right-header %}
 
         <button class="btn btn-secondary"><a href="">button</a></button>
@@ -70,7 +81,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                {% for habit in habits %}
+                {% for habit in object_list %}
                 <tbody>
                     <tr class="tr-shadow">
                         
@@ -82,7 +93,6 @@
                         <td >{{habit.routine}}</td>
                         <td>{{habit.reward}}</td>
                         <td>
-                            
                                 {% if habit.good %}
                                 <span class="text-success"> Positive </span>
                                 {% else %}

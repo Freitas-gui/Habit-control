@@ -1,17 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Habit</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-primary" type='submit '>Save</button>
-        {% if habit %} <!-- case update -->
-            <button class="btn btn-secondary"><a href="{% url 'delete_habit' pk=habit.pk %}">Delete</a></button>
-        {% endif %}
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">Create Habit</div>
+            <div class="card-body card-block">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            {{ form.name.errors }}
+                            <input class="form-control form-control-lg" type="text" placeholder='{{ form.name.label }}' {{ form.name }}</input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            {{ form.name.errors }}
+                            <textarea class="form-control form-control-lg" rows="3" type="text" placeholder='{{ form.trigger.label }}' {{ form.trigger }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-asterisk"></i>
+                            </div>
+                            {{ form.routine.errors }}
+                            <textarea class="form-control form-control-lg" rows="3" type="text" placeholder='{{ form.routine.label }}' {{ form.routine }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-asterisk"></i>
+                            </div>
+                            {{ form.reward.errors }}
+                            <textarea class="form-control form-control-lg" rows="3" type="text" placeholder='{{ form.reward.label }}' {{ form.reward }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-check form-group">
+                        {{ form.good.errors }}
+                        <label for='{{ form.good.id }}' class="form-check-label">
+                            {{ form.good }} Is positive ?
+                        </label>
+                    </div>
+                    <div class="form-actions form-group">
+                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+{% endblock %}
+
+{% block importe-js %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}
