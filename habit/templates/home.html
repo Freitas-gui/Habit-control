@@ -20,7 +20,7 @@
 
     {% block right-header %}
 
-        <button class="btn btn-secondary"><a href="" class="text-decoration-none text-white">button</a></button>
+        <button class="btn btn-secondary"><a href="" class="text-decoration-none text-white">Button</a></button>
 
     {% endblock %}
 
@@ -29,14 +29,11 @@
         <h1 class="title">Here you can see all your Habits</h1>
         <div class="table-data__tool">
             <div class="table-data__tool-left">
-                <div class="rs-select2--light rs-select2--md">
-                    <select class="js-select2" name="property">
-                        <option selected="selected">All Properties</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                    </select>
-                    <div class="dropDownSelect2"></div>
-                </div>
+                <button class="au-btn-filter">
+                    <a href="{% url 'home' %}" class="text-decoration-none text-secondary">
+                        <i class="zmdi zmdi-filter-list"></i>All Habits
+                    </a>
+                </button>
                 <div class="rs-select2--light rs-select2--sm">
                     <select class="js-select2" name="time">
                         <option selected="selected">Today</option>
@@ -76,41 +73,42 @@
                     </tr>
                 </thead>
                 {% for habit in object_list %}
+
                     <tbody>
-                        <tr class="tr-shadow">
-                            
-                            <td class="">
-                                <span class="block-email rounded ">{{habit.name}}</span></td>
-                            <td>
-                                {{habit.trigger}}
-                            </td>
-                            <td >{{habit.routine}}</td>
-                            <td>{{habit.reward}}</td>
-                            <td>
-                                    {% if habit.good %}
-                                    <span class="text-success"> Positive </span>
-                                    {% else %}
-                                        <span class="text-danger"> Negative </span>
-                                    {% endif %}
-                            </td>
-                            <td>
-                                <div class="table-data-feature">
-                                
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                        <a href="{% url 'update_habit' pk=habit.pk %}">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </a>
-                                    </button>
-                                    <button class="item button_delete" title="Delete" data-toggle="modal" data-target="#exampleModalCenter">
-                                            <i class="zmdi zmdi-delete"></i>
-                                         <a href="{% url 'delete_habit' pk=habit.pk %}" class="text-decoration-none text-white in_modal_link_habit invisible">Delete</a>
-                                        
-                                        <span class="in_modal_name_habit invisible">{{ habit.name }}</span>
-                                    </button>
+
+                        <tr class="tr-shadow ordinary_row">
+                                <td>
+                                    <span class="block-email rounded ">{{habit.name}}</span>
+                                </td>
+                                <td>{{habit.trigger}}</td>
+                                <td >{{habit.routine}}</td>
+                                <td>{{habit.reward}}</td>
+                                <td>
+                                        {% if habit.good %}
+                                        <span class="text-success"> Positive </span>
+                                        {% else %}
+                                            <span class="text-danger"> Negative </span>
+                                        {% endif %}
+                                </td>
+                                <td>
+                                    <div class="table-data-feature">
                                     
-                                </div>
-                            </td>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" >
+                                            <a href="{% url 'update_habit' pk=habit.pk %}">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                        </button>
+                                        <button class="item button_delete" title="Delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            <a href="{% url 'delete_habit' pk=habit.pk %}" class="text-decoration-none text-white in_modal_link_habit invisible">Delete</a>
+                                            
+                                            <span class="in_modal_name_habit invisible">{{ habit.name }}</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </div>
                         </tr>
+
                         <tr class="spacer"></tr>
                         
                     </tbody>
@@ -146,7 +144,7 @@
             </table>
         </div>
         <!-- END DATA TABLE -->
-        
+
     {% endblock %}
 
     {% block importe-js %}
