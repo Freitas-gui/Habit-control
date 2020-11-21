@@ -82,3 +82,7 @@
 .modal-backdrop {
   z-index: -1;
 }
+
+.invisible{
+    display: none;
+}

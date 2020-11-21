@@ -20,7 +20,7 @@
 
     {% block right-header %}
 
-        <button class="btn btn-secondary"><a href="">button</a></button>
+        <button class="btn btn-secondary"><a href="" class="text-decoration-none text-white">button</a></button>
 
     {% endblock %}
 
@@ -76,46 +76,47 @@
                     </tr>
                 </thead>
                 {% for habit in object_list %}
-                <tbody>
-                    <tr class="tr-shadow">
+                    <tbody>
+                        <tr class="tr-shadow">
+                            
+                            <td class="">
+                                <span class="block-email rounded ">{{habit.name}}</span></td>
+                            <td>
+                                {{habit.trigger}}
+                            </td>
+                            <td >{{habit.routine}}</td>
+                            <td>{{habit.reward}}</td>
+                            <td>
+                                    {% if habit.good %}
+                                    <span class="text-success"> Positive </span>
+                                    {% else %}
+                                        <span class="text-danger"> Negative </span>
+                                    {% endif %}
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+                                
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" >
+                                        <a href="{% url 'update_habit' pk=habit.pk %}">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>
+                                    </button>
+                                    <button class="item button_delete" title="Delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                            <i class="zmdi zmdi-delete"></i>
+                                         <a href="{% url 'delete_habit' pk=habit.pk %}" class="text-decoration-none text-white in_modal_link_habit invisible">Delete</a>
+                                        
+                                        <span class="in_modal_name_habit invisible">{{ habit.name }}</span>
+                                    </button>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
                         
-                        <td class="">
-                            <span class="block-email rounded ">{{habit.name}}</span></td>
-                        <td>
-                            {{habit.trigger}}
-                        </td>
-                        <td >{{habit.routine}}</td>
-                        <td>{{habit.reward}}</td>
-                        <td>
-                                {% if habit.good %}
-                                <span class="text-success"> Positive </span>
-                                {% else %}
-                                    <span class="text-danger"> Negative </span>
-                                {% endif %}
-                        </td>
-                        <td>
-                            <div class="table-data-feature">
-                               
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                    <a href="{% url 'update_habit' pk=habit.pk %}">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </a>
-                                </button>
-                                    <button  class="item" title="Delete" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <!-- <a href="{% url 'delete_habit' pk=habit.pk %}"> -->
-                                        <i class="zmdi zmdi-delete"></i>
-                                    <!-- </a> -->
-                                </button>
+                    </tbody>
 
-                                
-                                
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="spacer"></tr>
                     
-                </tbody>
-
+                {% endfor %}
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered " role="document">
@@ -127,7 +128,7 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                            {{ habit.name }}
+                                
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -136,18 +137,18 @@
                                 </a>
                             </button>
                             <button type="button" class="btn btn-primary ">
-                                <a href="{% url 'delete_habit' pk=habit.pk %}" class="text-decoration-none text-white">
-                                    Delete
-                                </a>
+                                
                             </button>
                             </div>
                         </div>
                         </div>
                     </div>
-                {% endfor %}
-
             </table>
         </div>
         <!-- END DATA TABLE -->
         
+    {% endblock %}
+
+    {% block importe-js %}
+        <script src="{% static 'js/table.js' %}"></script>
     {% endblock %}
